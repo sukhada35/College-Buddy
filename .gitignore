@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Ignore package.json
-package.json
+# package.json
