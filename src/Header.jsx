@@ -1,7 +1,7 @@
 function Header() {
 	return (
 		<header>
-			<h1>College Buddy website</h1>
+			<h1 className="bg-slate-600 p-10">College Buddy website</h1>
 			<nav>
 				<ul>
 					<li>
