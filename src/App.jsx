@@ -65,6 +65,7 @@ export default function HomePage() {
 						</Card>
 					))}
 				</section>
+				<div className="bg-red-500">ths is a div</div>
 			</div>
 		</ThemeProvider>
 	);
