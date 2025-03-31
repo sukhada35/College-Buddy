@@ -1,100 +1,217 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import {
+	Heart,
+	MessageCircle,
+	X,
+	User,
+	Settings,
+	Compass,
+	Star,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import person1 from "@/assets/images/person1.jpg";
+import person2 from "@/assets/images/person2.jpg";
+import person3 from "@/assets/images/person3.avif";
+import person4 from "@/assets/images/person4.jpg";
+
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ThemeProvider, useTheme } from "next-themes";
-import Matches from "./pages/Matches";
-import Likes from "./pages/Likes";
-import Profile from "./pages/Profile";
-
-function Navbar({ toggleTheme, theme }) {
-	return (
-		<nav className="flex justify-between items-center p-4 border-b shadow-md w-full">
-			<h1 className="text-xl font-bold">
-				<Link to="/">ShadCN Boilerplate</Link>
-			</h1>
-			<div className="space-x-4">
-				<Button asChild>
-					<Link to="/matches">Matches</Link>
-				</Button>
-				<Button asChild>
-					<Link to="/likes">Likes</Link>
-				</Button>
-				<Button asChild>
-					<Link to="/profile">Profile</Link>
-				</Button>
-				<Button onClick={toggleTheme}></Button>
-			</div>
-		</nav>
-	);
-}
-
-// function HomePage() {
-// 	return (
-// 		<main className="flex flex-col items-center justify-center flex-grow text-center">
-// 			<h2 className="text-3xl font-semibold mb-4">
-// 				Welcome to the ShadCN Starter!
-// 			</h2>
-// 			<p className="text-muted-foreground max-w-lg">
-// 				This is a simple boilerplate homepage using ShadCN components. Feel free
-// 				to customize it.
-// 			</p>
-// 			<Button className="mt-6">Get Started</Button>
-// 		</main>
-// 	);
-// }
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function App() {
-	const { theme, setTheme } = useTheme();
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [direction, setDirection] = useState(null);
 
-	const toggleTheme = () => {
-		setTheme(theme === "dark" ? "light" : "dark");
+	const profiles = [
+		{
+			id: 1,
+			name: "Alex Johnson",
+			age: 28,
+			location: "New York, NY",
+			bio: "Coffee enthusiast, hiking lover, and tech professional. Looking for someone to explore the city with!",
+			image: person1, // Ensure the path is correct or use a placeholder
+			distance: "2 miles away",
+		},
+		{
+			id: 2,
+			name: "Taylor Smith",
+			age: 26,
+			location: "Brooklyn, NY",
+			bio: "Art curator with a passion for photography. Let's visit museums and take pictures of the sunset.",
+			image: person2,
+			distance: "5 miles away",
+		},
+		{
+			id: 3,
+			name: "Jordan Rivera",
+			age: 30,
+			location: "Manhattan, NY",
+			bio: "Foodie and amateur chef. I know all the best restaurants in town and can cook a mean pasta dish.",
+			image: person3,
+			distance: "3 miles away",
+		},
+		{
+			id: 4,
+			name: "Casey Morgan",
+			age: 27,
+			location: "Queens, NY",
+			bio: "Music lover and concert-goer. Always on the lookout for new bands and sounds.",
+			image: person4,
+			distance: "7 miles away",
+		},
+	];
+
+	const activeProfile = profiles[currentIndex];
+
+	const handleSwipe = (dir) => {
+		setDirection(dir);
+		setTimeout(() => {
+			setDirection(null);
+			setCurrentIndex((prevIndex) => (prevIndex + 1) % profiles.length);
+		}, 300);
 	};
 
 	return (
-		<ThemeProvider attribute="class">
-			<Router>
-				<div className="h-screen w-screen flex flex-col bg-background text-foreground">
-					<Navbar toggleTheme={toggleTheme} theme={theme} />
-					<div className="flex-grow">
-						<Routes>
-							{/* <Route path="/" element={<HomePage />} /> */}
-							<Route path="/matches" element={<Matches />} />
-							<Route path="/likes" element={<Likes />} />
-							<Route path="/profile" element={<Profile />} />
-						</Routes>
-					</div>
+		<div className="flex flex-col h-screen max-w-md mx-auto bg-background">
+			<header className="flex items-center justify-between p-4 border-b">
+				<Button variant="ghost" size="icon">
+					<Settings className="h-6 w-6" />
+				</Button>
+				<h1 className="text-xl font-bold text-primary">Matcher</h1>
+				<Button variant="ghost" size="icon">
+					<MessageCircle className="h-6 w-6" />
+				</Button>
+			</header>
 
-					{/* Cards Section */}
-					<section className="grid md:grid-cols-3 gap-6 p-8">
-						{[
-							{
-								title: "Fast Development",
-								desc: "ShadCN UI makes building React apps faster and more stylish.",
-							},
-							{
-								title: "Customizable",
-								desc: "Fully customizable UI with Tailwind and Radix components.",
-							},
-							{
-								title: "Dark Mode Support",
-								desc: "Toggle between light and dark themes effortlessly.",
-							},
-						].map((card, index) => (
-							<Card key={index}>
-								<CardHeader>
-									<CardTitle>{card.title}</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p>{card.desc}</p>
-								</CardContent>
+			<main className="flex-1 p-4 overflow-hidden">
+				<AnimatePresence>
+					{activeProfile && (
+						<motion.div
+							key={activeProfile.id}
+							initial={{ scale: 0.8, opacity: 0 }}
+							animate={{
+								scale: direction ? (direction === "right" ? 1.1 : 0.9) : 1,
+								opacity: 1,
+								x:
+									direction === "right" ? 100 : direction === "left" ? -100 : 0,
+								rotate:
+									direction === "right" ? 5 : direction === "left" ? -5 : 0,
+							}}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.3 }}
+							className="h-full"
+						>
+							<Card className="h-full p-0 overflow-hidden">
+								<div className="relative h-full">
+									<img
+										src={activeProfile.image || "/placeholder.svg"}
+										alt={activeProfile.name}
+										className="w-full h-full object-cover"
+									/>
+									<div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
+										<h2 className="text-2xl font-bold">
+											{activeProfile.name}, {activeProfile.age}
+										</h2>
+										<p className="text-sm opacity-90">
+											{activeProfile.location}
+										</p>
+										<p className="text-xs mt-1 opacity-75">
+											{activeProfile.distance}
+										</p>
+										<p className="text-sm text-muted-foreground">
+											{activeProfile.bio}
+										</p>
+										{/* like dislike reject buttons : */}
+										<div className="flex justify-center space-x-4 p-4">
+											<Button
+												onClick={() => handleSwipe("left")}
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-destructive"
+											>
+												<X className="h-8 w-8 text-destructive" />
+											</Button>
+											<Button
+												onClick={() => handleSwipe("right")}
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-red-500"
+											>
+												<Heart className="h-8 w-8 text-red-500" />
+											</Button>
+											<Button
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-blue-500"
+											>
+												<Star className="h-8 w-8 text-blue-500" />
+											</Button>
+										</div>
+									</div>
+								</div>
+
+								{/* <CardContent className="px-4 h-1/4 overflow-y-auto">
+									<h2 className="text-xl font-bold">About</h2>
+								</CardContent> */}
 							</Card>
-						))}
-					</section>
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</main>
 
-					{/* <div className="bg-red-500 w-full text-center p-4">This is a div</div> */}
-				</div>
-			</Router>
-		</ThemeProvider>
+			<footer className="p-4 border-t">
+				{/* this was the old clicks for like and reeject */}
+				{/* <div className="flex justify-center space-x-4">
+					<Button
+						onClick={() => handleSwipe("left")}
+						variant="outline"
+						size="icon"
+						className="h-14 w-14 rounded-full border-2 border-destructive"
+					>
+						<X className="h-8 w-8 text-destructive" />
+					</Button>
+					<Button
+						onClick={() => handleSwipe("right")}
+						variant="outline"
+						size="icon"
+						className="h-14 w-14 rounded-full border-2 border-green-500"
+					>
+						<Heart className="h-8 w-8 text-green-500" />
+					</Button>
+					<Button
+						variant="outline"
+						size="icon"
+						className="h-14 w-14 rounded-full border-2 border-blue-500"
+					>
+						<MessageCircle className="h-8 w-8 text-blue-500" />
+					</Button>
+				</div> */}
+				<nav className="flex justify-around">
+					<Button
+						variant="ghost"
+						size="lg"
+						className="flex flex-col items-center"
+					>
+						<Compass className="h-20 w-20" />
+						{/* <span className="text-xs">Discover</span> */}
+					</Button>
+					<Button
+						variant="ghost"
+						size="lg"
+						className="flex flex-col items-center"
+					>
+						<Heart className="h-20 w-20" />
+						{/* <span className="text-xs">Messages</span> */}
+					</Button>
+					<Button
+						variant="ghost"
+						size="lg"
+						className="flex flex-col items-center px-0 py-0 mx-0 my-0"
+					>
+						<User className="h-20 w-20 px-0 m-0" />
+						{/* <span className="text-xs">Profile</span> */}
+					</Button>
+				</nav>
+			</footer>
+		</div>
 	);
 }
