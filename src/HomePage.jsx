@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ThemeProvider, useTheme } from "next-themes";
 
 import Matches from "./pages/Matches"; // Ensure this file exists
-import Likes from "./pages/Likes"; // Ensure this file exists
-import Profile from "./pages/Profile"; // Ensure this file exists
+import Likes from "./pages/LikesPage"; // Ensure this file exists
+import Profile from "./pages/ProfilePage"; // Ensure this file exists
 
 export default function HomePage() {
 	const { theme, setTheme } = useTheme();

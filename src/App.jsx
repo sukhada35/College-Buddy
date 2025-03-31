@@ -1,4 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+//importing pages
+import LikesPage from "./pages/LikesPage"; // Import your components or pages
+import ProfilePage from "./pages/ProfilePage";
+// importing icons
 import {
 	Heart,
 	MessageCircle,
@@ -7,6 +13,7 @@ import {
 	Settings,
 	Compass,
 	Star,
+	Send,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import person1 from "@/assets/images/person1.jpg";
@@ -76,9 +83,9 @@ export default function App() {
 				<Button variant="ghost" size="icon">
 					<Settings className="h-6 w-6" />
 				</Button>
-				<h1 className="text-xl font-bold text-primary">Matcher</h1>
+				<h1 className="text-xl font-bold text-primary">Discover</h1>
 				<Button variant="ghost" size="icon">
-					<MessageCircle className="h-6 w-6" />
+					<Send className="h-6 w-6" />
 				</Button>
 			</header>
 
