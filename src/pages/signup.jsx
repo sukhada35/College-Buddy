@@ -10,7 +10,7 @@ export default function SignUp() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
-	const { signUp, signInWithGoogle } = useAuth();
+	// const { signUp, signInWithGoogle } = useAuth();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

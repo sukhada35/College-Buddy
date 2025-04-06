@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "./components/react/navbar";
 
+import "../dist/output.css";
+
 export default function App() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(null);
