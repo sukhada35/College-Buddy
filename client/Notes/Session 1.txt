@@ -1,0 +1,13 @@
+Session 1:
+
+
+1. pull
+2. run 'npm i' -> to install all dependencies 
+3. run 'npm run dev' -> running the site on development server 
+4. run 'npm run start' -> running actual site
+5. run 'npm run test' (not sure)
+
+-> react.js is a component library and not a javascript framework (for use case)
+-> jsx files -> js xml files (markup files similar to html)
+
+make multiple jsx (for ex. App) files (components) and put it on main.jsx files
