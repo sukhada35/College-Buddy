@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 // import { useAuth } from "../context/AuthContext";
-
+//Axios is a popular JavaScript library used to make HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js.
+import axios from 'axios'
 export default function SignUp() {
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,6 +15,7 @@ export default function SignUp() {
 	// const { signUp, signInWithGoogle } = useAuth();
 
 	const handleSubmit = async (e) => {
+		//prevent it from trigerring by default
 		e.preventDefault();
 		setIsLoading(true);
 
@@ -21,6 +24,10 @@ export default function SignUp() {
 			setIsLoading(false);
 			return;
 		}
+
+		axios.post('', { name, email, password })
+		.then(result => console.log(result))
+		.catch(err => console.log(err))
 
 		try {
 			await signUp(email, password);
@@ -72,7 +79,23 @@ export default function SignUp() {
 
 				<form className="mt-8 space-y-6" onSubmit={handleSubmit}>
 					<div className="space-y-4 rounded-md">
-						<div>
+						<div name="Name input field div">
+							<label htmlFor="name" className="sr-only">
+								Name
+							</label>
+							<input
+								id="name"
+								name="name"
+								type="text"
+								required
+								className="input-field"
+								placeholder="Name"
+								value={email}
+								//React event handler that listens for changes in the input field. It triggers whenever the user types, deletes, or modifies the input value.
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</div>
+						<div name="Email input field div">
 							<label htmlFor="email" className="sr-only">
 								Email address
 							</label>
@@ -87,7 +110,8 @@ export default function SignUp() {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
-						<div>
+
+						<div name="Password input field div">
 							<label htmlFor="password" className="sr-only">
 								Password
 							</label>

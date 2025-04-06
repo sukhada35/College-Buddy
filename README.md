@@ -69,3 +69,10 @@ For inquiries, contact maintainers at [email@example.com](mailto:email@example.c
 
 ---
 **Last Updated:** Based on the College Buddy Project Report from Mukesh Patel School of Technology & Management Engineering.
+
+
+commands
+in server dir: 
+nodemon index.js
+tailwind watch command:
+ npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
