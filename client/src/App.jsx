@@ -193,9 +193,10 @@ export default function App() {
 				<Route
 					path="/likes"
 					element={
-						<ProtectedRoute>
-							<LikesPage />
-						</ProtectedRoute>
+						LikesPage
+						// <ProtectedRoute>
+						// 	<LikesPage />
+						// </ProtectedRoute>
 					}
 				/>
 				<Route
