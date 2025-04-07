@@ -17,9 +17,12 @@ export const Navbar = () => {
 					size="lg"
 					className="flex flex-col items-center"
 				>
-					<Link to="/" className={isActive("") ? "text-blue-500" : ""}>
+					<Link
+						to="/discover"
+						className={isActive("/discover") ? "text-blue-500" : ""}
+					>
 						<Compass className="h-10 w-10" />
-						{/* <span className="text-xs">Discover</span> */}
+						<span className="text-xs">Discover</span>
 					</Link>
 				</Button>
 				<Button
@@ -29,11 +32,11 @@ export const Navbar = () => {
 					className="flex flex-col items-center"
 				>
 					<Link
-						to="/LikesPage"
-						className={isActive("/LikesPage") ? "text-blue-500" : ""}
+						to="/likes"
+						className={isActive("/likes") ? "text-blue-500" : ""}
 					>
 						<Heart className="h-10 w-10" />
-						{/* <span className="text-xs">Likes</span> */}
+						<span className="text-xs">Likes</span>
 					</Link>
 				</Button>
 				<Button
@@ -43,11 +46,11 @@ export const Navbar = () => {
 					className="flex flex-col items-center"
 				>
 					<Link
-						to="/ProfilePage"
-						className={isActive("/ProfilePage") ? "text-blue-500" : ""}
+						to="/profile"
+						className={isActive("/profile") ? "text-blue-500" : ""}
 					>
 						<User className="h-10 w-10" />
-						{/* <span className="text-xs">Profile</span> */}
+						<span className="text-xs">Profile</span>
 					</Link>
 				</Button>
 			</nav>

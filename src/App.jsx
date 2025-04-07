@@ -89,124 +89,106 @@ export default function App() {
 
 				{/* Protected Routes */}
 				<Route
-					path="/"
+					path="/discover"
 					element={
-						<ProtectedRoute>
-							<div className="flex flex-col h-screen max-w-md mx-auto bg-background">
-								<header className="flex items-center justify-between p-4 border-b">
-									<Button variant="ghost" size="icon">
-										<Settings className="h-6 w-6" />
-									</Button>
-									<h1 className="text-xl font-bold text-primary">Discover</h1>
-									<Button variant="ghost" size="icon">
-										<Send className="h-6 w-6" />
-									</Button>
-								</header>
-								<main className="flex-1 p-4 overflow-hidden">
-									<AnimatePresence>
-										{activeProfile && (
-											<motion.div
-												key={activeProfile.id}
-												initial={{ scale: 0.8, opacity: 0 }}
-												animate={{
-													scale: direction
-														? direction === "right"
-															? 1.1
-															: 0.9
-														: 1,
-													opacity: 1,
-													x:
-														direction === "right"
-															? 100
-															: direction === "left"
-															? -100
-															: 0,
-													rotate:
-														direction === "right"
-															? 5
-															: direction === "left"
-															? -5
-															: 0,
-												}}
-												exit={{ opacity: 0 }}
-												transition={{ duration: 0.3 }}
-												className="h-full"
-											>
-												<Card className="h-full p-0 overflow-hidden">
-													<div className="relative h-full">
-														<img
-															src={activeProfile.image || "/placeholder.svg"}
-															alt={activeProfile.name}
-															className="w-full h-full object-cover"
-														/>
-														<div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
-															<h2 className="text-2xl font-bold">
-																{activeProfile.name}, {activeProfile.age}
-															</h2>
-															<p className="text-sm opacity-90">
-																{activeProfile.location}
-															</p>
-															<p className="text-xs mt-1 opacity-75">
-																{activeProfile.distance}
-															</p>
-															<p className="text-sm text-muted-foreground">
-																{activeProfile.bio}
-															</p>
-															{/* Like/Dislike Buttons */}
-															<div className="flex justify-center space-x-4 p-4">
-																<Button
-																	onClick={() => handleSwipe("left")}
-																	variant="outline"
-																	size="icon"
-																	className="h-14 w-14 rounded-full border-2 border-destructive"
-																>
-																	<X className="h-8 w-8 text-destructive" />
-																</Button>
-																<Button
-																	onClick={() => handleSwipe("right")}
-																	variant="outline"
-																	size="icon"
-																	className="h-14 w-14 rounded-full border-2 border-red-500"
-																>
-																	<Heart className="h-8 w-8 text-red-500" />
-																</Button>
-																<Button
-																	variant="outline"
-																	size="icon"
-																	className="h-14 w-14 rounded-full border-2 border-blue-500"
-																>
-																	<Star className="h-8 w-8 text-blue-500" />
-																</Button>
-															</div>
-														</div>
-													</div>
-												</Card>
-											</motion.div>
-										)}
-									</AnimatePresence>
-								</main>
-								<Navbar />
-							</div>
-						</ProtectedRoute>
+						<Discover
+							activeProfile={activeProfile}
+							handleSwipe={handleSwipe}
+							direction={direction}
+						/>
 					}
 				/>
-				<Route
-					path="/likes"
-					element={
-						<ProtectedRoute>
-							<LikesPage />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/profile"
-					element={
-						<ProtectedRoute>
-							<ProfilePage />
-						</ProtectedRoute>
-					}
-				/>
+				<Route path="/likes" element={<LikesPage />} />
+				<Route path="/profile" element={<ProfilePage />} />
 			</Routes>
 		</Router>
+	);
+}
+
+function Discover({ activeProfile, handleSwipe, direction }) {
+	return (
+		<div className="flex flex-col h-screen max-w-md mx-auto bg-background">
+			<header className="flex items-center justify-between p-4 border-b">
+				<Button variant="ghost" size="icon">
+					<Settings className="h-6 w-6" />
+				</Button>
+				<h1 className="text-xl font-bold text-primary">Discover</h1>
+				<Button variant="ghost" size="icon">
+					<Send className="h-6 w-6" />
+				</Button>
+			</header>
+			<main className="flex-1 p-4 overflow-hidden">
+				<AnimatePresence>
+					{activeProfile && (
+						<motion.div
+							key={activeProfile.id}
+							initial={{ scale: 0.8, opacity: 0 }}
+							animate={{
+								scale: direction ? (direction === "right" ? 1.1 : 0.9) : 1,
+								opacity: 1,
+								x:
+									direction === "right" ? 100 : direction === "left" ? -100 : 0,
+								rotate:
+									direction === "right" ? 5 : direction === "left" ? -5 : 0,
+							}}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.3 }}
+							className="h-full"
+						>
+							<Card className="h-full p-0 overflow-hidden">
+								<div className="relative h-full">
+									<img
+										src={activeProfile.image || "/placeholder.svg"}
+										alt={activeProfile.name}
+										className="w-full h-full object-cover"
+									/>
+									<div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
+										<h2 className="text-2xl font-bold">
+											{activeProfile.name}, {activeProfile.age}
+										</h2>
+										<p className="text-sm opacity-90">
+											{activeProfile.location}
+										</p>
+										<p className="text-xs mt-1 opacity-75">
+											{activeProfile.distance}
+										</p>
+										<p className="text-sm text-muted-foreground">
+											{activeProfile.bio}
+										</p>
+										{/* Like/Dislike Buttons */}
+										<div className="flex justify-center space-x-4 p-4">
+											<Button
+												onClick={() => handleSwipe("left")}
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-destructive"
+											>
+												<X className="h-8 w-8 text-destructive" />
+											</Button>
+											<Button
+												onClick={() => handleSwipe("right")}
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-red-500"
+											>
+												<Heart className="h-8 w-8 text-red-500" />
+											</Button>
+											<Button
+												variant="outline"
+												size="icon"
+												className="h-14 w-14 rounded-full border-2 border-blue-500"
+											>
+												<Star className="h-8 w-8 text-blue-500" />
+											</Button>
+										</div>
+									</div>
+								</div>
+							</Card>
+						</motion.div>
+					)}
+				</AnimatePresence>
+			</main>
+			<Navbar />
+		</div>
 	);
 }
