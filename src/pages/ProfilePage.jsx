@@ -1,3 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { Navbar } from "../components/react/navbar";
+import { Settings, Send, Camera } from "lucide-react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import Messages from "./Messages";
+
 function ProfilePage() {
 	return (
 		<div className="flex flex-col h-screen max-w-md mx-auto bg-background">
@@ -7,7 +13,9 @@ function ProfilePage() {
 				</Button>
 				<h1 className="text-xl font-bold text-primary">Profile</h1>
 				<Button variant="ghost" size="icon">
-					<Send className="h-6 w-6" />
+					<Link to="/messages">
+						<Send className="h-6 w-6" />
+					</Link>
 				</Button>
 			</header>
 
@@ -16,9 +24,9 @@ function ProfilePage() {
 					{/* Profile Image */}
 					<div className="relative w-full h-80 mb-4">
 						<img
-							src="/path-to-your-profile-image.jpg" // Replace with actual image URL
+							src="../assets/images/person2.jpg" // Replace with actual image URL
 							alt="Profile"
-							className="w-full h-full object-cover rounded-xl"
+							className="w-full h-full object-cover rounded-xl bg-gray-700"
 						/>
 					</div>
 
@@ -66,13 +74,15 @@ function ProfilePage() {
 
 					{/* Edit Profile Button */}
 					<div className="pt-6">
-						<Button
-							variant="outline"
-							size="lg"
-							className="w-full py-3 bg-[#E94057] text-white font-semibold rounded-lg hover:bg-[#d9374e] transition"
-						>
-							Edit Profile
-						</Button>
+						<Link to="/edit-profile">
+							<Button
+								variant="outline"
+								size="lg"
+								className="w-full py-3 bg-[#E94057] text-white font-semibold rounded-lg hover:bg-[#d9374e] transition"
+							>
+								Edit Profile
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</main>

@@ -1,16 +1,12 @@
 import { useState } from "react";
-import {
-	BrowserRouter as Router,
-	Route,
-	Routes,
-	Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 // Importing pages
 import LikesPage from "./pages/LikesPage";
 import ProfilePage from "./pages/ProfilePage";
-import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Message from "./pages/Messages";
 import ProtectedRoute from "./components/react/ProtectedRoute";
 
 // Importing icons
@@ -93,6 +89,7 @@ export default function App() {
 			<Routes>
 				{/* Public Routes */}
 				<Route path="/" element={<Login />} />
+				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<SignUp />} />
 
 				{/* Protected Routes */}
@@ -108,6 +105,15 @@ export default function App() {
 				/>
 				<Route path="/likes" element={<LikesPage />} />
 				<Route path="/profile" element={<ProfilePage />} />
+				<Route
+					path="/messages"
+					element={
+						// <ProtectedRoute>
+						// 	<Message />
+						// </ProtectedRoute>
+						<Message />
+					}
+				/>
 			</Routes>
 		</Router>
 	);
@@ -122,7 +128,9 @@ function Discover({ activeProfile, handleSwipe, direction }) {
 				</Button>
 				<h1 className="text-xl font-bold text-primary">Discover</h1>
 				<Button variant="ghost" size="icon">
-					<Send className="h-6 w-6" />
+					<Link to="/messages">
+						<Send className="h-6 w-6" />
+					</Link>
 				</Button>
 			</header>
 			<main className="flex-1 p-4 overflow-hidden">
@@ -168,7 +176,7 @@ function Discover({ activeProfile, handleSwipe, direction }) {
 												<Instagram />
 												Instagram
 											</div>
-											<div className="h-14 w-[50%] rounded-xl border-2 border-blue-500 flex justify-center items-center gap-2 bg-[#0f0f0f]">
+											<div className="h-14 w-[50%] rounded-xl border-2 border-red-500 flex justify-center items-center gap-2 bg-[#0f0f0f]">
 												<LinkedinIcon />
 												Instagram
 											</div>
