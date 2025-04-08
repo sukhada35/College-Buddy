@@ -1,80 +1,111 @@
-# College Buddy
+<h1 align="center">College Buddy ✨</h1>
 
-Welcome to the **College Buddy** project! This document offers an in-depth overview, highlighting key functionalities designed to enhance the college experience.
+![Demo App](/client/public/screenshot-for-readme.png)
 
-## 🚀 Project Overview
-**College Buddy** is a web application built with **React** and **Vite**, designed to foster networking, collaboration, and academic engagement within college communities. It helps students connect with peers, collaborate on projects, and engage with like-minded individuals based on shared interests.
+Welcome to the **College Buddy** project! This platform is designed to foster networking, collaboration, and academic engagement within college communities. Students can connect with peers, share resources, and even chat in real time — all in one place.
 
 ---
 
-## 🛠️ Getting Started
-### 1️⃣ Clone the repository:
-```bash
-git clone https://github.com/yourusername/college-buddy.git
-```
-### 2️⃣ Navigate to the project directory:
-```bash
-cd college-buddy
-```
-### 3️⃣ Install dependencies:
-```bash
-npm install
-```
-### 4️⃣ Start the development server:
-```bash
-npm run dev
-```
----
+## 🚀 Key Features
 
-## ✨ Key Features
-- 🌐 **Networking & Collaboration:** Connect with college peers, find individuals with similar interests, and collaborate on academic or extracurricular projects.
-- 🤖 **AI Chatbot:** Offers academic support by summarizing lectures and answering queries using notes provided by specific faculty members.
-- 📂 **Resource Sharing:** Centralized hub for sharing lecture notes, assignments, and study materials.
-- 📱 **Mobile-First Design:** Designed for mobile accessibility with PWA support for offline use.
+- 🔐 **Authentication System** with JWT  
+- 🛡️ **Route Protection** for secure access  
+- 👤 **User Profile Creation & Updates**  
+- 🖼️ **Profile Image Upload** via Cloudinary  
+- 🔄 **Interest Matching & Connection**  
+- 💬 **Real-time Chat Messaging**  
+- 🔔 **Real-time Notifications**  
+- 🤖 **AI Chatbot** for Academic Support  
+- 📂 **Centralized Resource Sharing**  
+- 📱 **Responsive Mobile-first Design**  
+- 🧠 **Smart Summarizer** trained on faculty notes  
+- ⌛ **PWA Support** for offline accessibility  
 
 ---
 
 ## 🧰 Technologies & Frameworks
-- 🖥️ **Frontend:** React.js, Tailwind CSS
-- ⚙️ **Backend:** Node.js, Express.js, Firebase/Supabase
-- 💾 **Database:** Firestore (NoSQL) / Supabase (PostgreSQL)
-- 🤖 **AI Integration:** OpenAI API trained with faculty-provided notes for enhanced academic support
-- 🚀 **Deployment:** Vercel (Frontend), Firebase/Render (Backend)
+
+- 🖥️ **Frontend:** React.js, Tailwind CSS  
+- ⚙️ **Backend:** Node.js, Express.js  
+- 💾 **Database:** Firebase Firestore / Supabase PostgreSQL  
+- ☁️ **Image Hosting:** Cloudinary  
+- 🤖 **AI Integration:** OpenAI API  
+- 🚀 **Deployment:** Vercel (Frontend), Firebase or Render (Backend)  
 
 ---
 
-## 👥 Contributors
-- C013 **Ashmit Jain** – [ashmit27j](https://github.com/ashmit27j)
-- C035 **Sukhada Gulhane** – [sukhada35](https://github.com/sukhada35)
-- C046 **Neerav Reddy**
-- C058 **Tanay Shah**
+## 🛠️ Getting Started
 
----
+### 1️⃣ Clone the repository:
+```bash
+git clone https://github.com/yourusername/college-buddy.git
+```
 
-## 🤝 Contributing
-We welcome contributions from the community:
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit changes with clear messages.
-4. Push to your fork.
-5. Open a pull request.
+2️⃣ Navigate to the project directory:
+```bash
+cd college-buddy
+```
 
----
+3️⃣ Install dependencies:
+```bash
+npm install
+```
 
-## 📜 License
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+⚙️ Setup `.env` file  
+In the `server/` directory, create a `.env` file:
+```bash
+PORT=5000
+MONGO_URI=<your_mongo_uri>
+JWT_SECRET=<your_very_strong_secret>
+NODE_ENV=development
+CLIENT_URL=http://localhost:5173
+CLOUDINARY_API_KEY=<your_cloudinary_api_key>
+CLOUDINARY_API_SECRET=<your_cloudinary_api_secret>
+CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+```
 
-## 📞 Contact
-For inquiries, contact maintainers at [email@example.com](mailto:email@example.com).
-
----
-**Last Updated:** Based on the College Buddy Project Report from Mukesh Patel School of Technology & Management Engineering.
-
-
-commands
-in server dir: 
+🚧 Development Commands  
+Start the backend:
+```bash
 nodemon index.js
-tailwind watch command:
- npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+```
 
- Password!3513@2025
+Tailwind watch command (for custom CSS):
+```bash
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+```
+
+Start the frontend:
+```bash
+npm run dev
+```
+
+Build for production:
+```bash
+npm run build
+```
+
+Start the production server:
+```bash
+npm run start
+```
+
+👥 Contributors  
+- **C013 Ashmit Jain** – ashmit27j  
+- **C035 Sukhada Gulhane** – sukhada35  
+- **C046 Neerav Reddy**  
+- **C058 Tanay Shah**  
+
+🤝 Contributing  
+We welcome contributions from the community:  
+1. Fork the repository  
+2. Create a feature branch  
+3. Commit changes with clear messages  
+4. Push to your fork  
+5. Open a pull request  
+
+📜 License  
+We dont have a license 
+
+📞 Contact  
+Dont contact us
