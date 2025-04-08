@@ -121,13 +121,13 @@ export default function Likes() {
 	};
 
 	return (
-		<div className="w-full max-w-md mx-auto bg-background min-h-screen flex flex-col place-content-between">
+		<div className="w-full max-w-md mx-auto bg-background min-h-screen flex flex-col place-content-between px-4">
 			<div className="sticky top-0 z-10 bg-background">
 				<header className="flex items-center justify-between p-4 border-b">
 					<Button variant="ghost" size="icon">
 						<Settings className="h-6 w-6" />
 					</Button>
-					<h1 className="text-xl font-bold text-primary">Discover</h1>
+					<h1 className="text-xl font-bold text-primary">Likes</h1>
 					<Button variant="ghost" size="icon">
 						<Link to="/messages">
 							<Send className="h-6 w-6" />
@@ -139,16 +139,16 @@ export default function Likes() {
 					className="w-full"
 					onValueChange={setActiveTab}
 				>
-					<TabsList className="grid grid-cols-2 w-full gap-4 my-4">
-						<TabsTrigger value="likes" className="text-white">
+					<TabsList className="grid grid-cols-2 w-[100%] gap-4 my-4 border-b-[#d0d0d0]">
+						<TabsTrigger value="likes" className="text-white w-full">
 							Likes ({likes.length})
 						</TabsTrigger>
-						<TabsTrigger value="requests" className="py-3 text-white">
+						<TabsTrigger value="requests" className=" text-white w-full">
 							Requests ({requests.length})
 						</TabsTrigger>
 					</TabsList>
 
-					<TabsContent value="likes" className="mt-0">
+					<TabsContent value="likes" className="m-0 p-0">
 						<div className="p-4 bg-gray-50 rounded-xl">
 							<p className="text-sm text-gray-500">Search</p>
 						</div>
