@@ -188,11 +188,8 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .inline-flex {
   display: inline-flex;
 }
-.h-\[0\.7rem\] {
-  height: 0.7rem;
-}
-.h-\[1rem\] {
-  height: 1rem;
+.table {
+  display: table;
 }
 .h-full {
   height: 100%;
@@ -206,11 +203,14 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .min-h-screen {
   min-height: 100vh;
 }
+.w-\[1\/2em\] {
+  width: 1/2em;
+}
+.w-\[50\%\] {
+  width: 50%;
+}
 .w-auto {
   width: auto;
-}
-.w-fit {
-  width: fit-content;
 }
 .w-full {
   width: 100%;
@@ -218,11 +218,20 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .flex-1 {
   flex: 1;
 }
+.flex-shrink {
+  flex-shrink: 1;
+}
 .shrink-0 {
   flex-shrink: 0;
 }
 .flex-grow {
   flex-grow: 1;
+}
+.border-collapse {
+  border-collapse: collapse;
+}
+.resize {
+  resize: both;
 }
 .auto-rows-min {
   grid-auto-rows: min-content;
@@ -232,6 +241,9 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 }
 .flex-col {
   flex-direction: column;
+}
+.place-content-between {
+  place-content: space-between;
 }
 .items-center {
   align-items: center;
@@ -276,6 +288,24 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
   border-bottom-style: var(--tw-border-style);
   border-bottom-width: 1px;
 }
+.border-\[\#0077B5\] {
+  border-color: #0077B5;
+}
+.border-\[\#E94057\] {
+  border-color: #E94057;
+}
+.bg-\[\#0f0f0f\] {
+  background-color: #0f0f0f;
+}
+.bg-\[\#E94057\] {
+  background-color: #E94057;
+}
+.bg-\[\#FFF\] {
+  background-color: #FFF;
+}
+.bg-\[\#\] {
+  background-color: #;
+}
 .bg-gradient-to-t {
   --tw-gradient-position: to top in oklab;
   background-image: linear-gradient(var(--tw-gradient-stops));
@@ -290,18 +320,6 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .py-\[0\.7rem\] {
   padding-block: 0.7rem;
 }
-.py-\[0\.8rem\] {
-  padding-block: 0.8rem;
-}
-.py-\[1\.5rem\] {
-  padding-block: 1.5rem;
-}
-.py-\[1rem\] {
-  padding-block: 1rem;
-}
-.py-\[2\.5rem\] {
-  padding-block: 2.5rem;
-}
 .text-center {
   text-align: center;
 }
@@ -311,6 +329,15 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 }
 .whitespace-nowrap {
   white-space: nowrap;
+}
+.text-\[\#0077B5\] {
+  color: #0077B5;
+}
+.text-\[\#E94057\] {
+  color: #E94057;
+}
+.underline {
+  text-decoration-line: underline;
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
@@ -345,6 +372,13 @@ button, input:where([type='button'], [type='reset'], [type='submit']), ::file-se
 .outline-none {
   --tw-outline-style: none;
   outline-style: none;
+}
+.hover\:bg-\[\#d9374e\] {
+  &:hover {
+    @media (hover: hover) {
+      background-color: #d9374e;
+    }
+  }
 }
 .hover\:underline {
   &:hover {

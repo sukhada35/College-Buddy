@@ -14,7 +14,15 @@ import SignUp from "./pages/SignUp";
 import ProtectedRoute from "./components/react/ProtectedRoute";
 
 // Importing icons
-import { Heart, X, Settings, Send, Star } from "lucide-react";
+import {
+	Heart,
+	X,
+	Settings,
+	Send,
+	Star,
+	Instagram,
+	LinkedinIcon,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import person1 from "@/assets/images/person1.jpg";
 import person2 from "@/assets/images/person2.jpg";
@@ -155,6 +163,16 @@ function Discover({ activeProfile, handleSwipe, direction }) {
 										<p className="text-sm text-muted-foreground">
 											{activeProfile.bio}
 										</p>
+										<div className="flex place-content-between gap-4">
+											<div className="h-14 w-[50%] rounded-xl border-2 border-red-500 flex justify-center items-center gap-2 bg-[#0f0f0f]">
+												<Instagram />
+												Instagram
+											</div>
+											<div className="h-14 w-[50%] rounded-xl border-2 border-blue-500 flex justify-center items-center gap-2 bg-[#0f0f0f]">
+												<LinkedinIcon />
+												Instagram
+											</div>
+										</div>
 										{/* Like/Dislike Buttons */}
 										<div className="flex justify-center space-x-4 p-4">
 											<Button
